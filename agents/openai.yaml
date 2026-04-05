@@ -1,0 +1,4 @@
+interface:
+  display_name: "Buffett Investment Research"
+  short_description: "Analyze companies with Buffett framework."
+  default_prompt: "Assess this company using Buffett style investment framework and produce a structured research memo."
