@@ -292,18 +292,17 @@ def render_text(summary: dict[str, Any]) -> str:
         lines.append(f"- {label}: {value} | FY{fact.get('fy', 'n/a')} | tag={fact.get('tag')}")
 
     line_for_fact("Revenue", annual["revenue"])
-    line_forFact = line_for_fact
-    line_forFact("Operating income", annual["operating_income"])
-    line_forFact("Net income", annual["net_income"])
-    line_forFact("Operating cash flow", annual["operating_cash_flow"])
-    line_forFact("Capex (total)", annual["capex_total"])
+    line_for_fact("Operating income", annual["operating_income"])
+    line_for_fact("Net income", annual["net_income"])
+    line_for_fact("Operating cash flow", annual["operating_cash_flow"])
+    line_for_fact("Capex (total)", annual["capex_total"])
     owner = annual["owner_earnings_proxy"]
     lines.append(f"- Owner earnings proxy (CFO - total capex): {fmt_money(owner)}")
-    line_forFact("Cash", annual["cash"])
-    line_forFact("Long-term debt", annual["debt_long_term"])
-    line_forFact("Current debt", annual["debt_current"])
+    line_for_fact("Cash", annual["cash"])
+    line_for_fact("Long-term debt", annual["debt_long_term"])
+    line_for_fact("Current debt", annual["debt_current"])
     lines.append(f"- Net cash / (net debt): {fmt_money(annual['net_cash_or_debt'])}")
-    line_forFact("Shares outstanding", annual["shares_outstanding"], shares=True)
+    line_for_fact("Shares outstanding", annual["shares_outstanding"], shares=True)
     lines.extend(
         [
             "",
