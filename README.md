@@ -1,20 +1,62 @@
 # Buffett Investment Research
 
-A Codex skill for Buffett-style company analysis and value-investing research.
+A Codex skill for Buffett-style company analysis, value-investing research, and structured investment memos.
 
-This repository packages a reusable research workflow that evaluates a business the way Warren Buffett often described in his shareholder letters: first understand the business, then judge moat, management, capital allocation, balance-sheet resilience, reinvestment runway, and only then ask whether the current price offers a margin of safety.
+This repository turns Buffett's investing principles into an operational research workflow. Instead of producing a fast opinion, it pushes Codex to do the slower, more important work first: define the exact business, gather primary sources, judge moat and management, stress-test the balance sheet, estimate normalized owner earnings, and only then talk about price.
 
-It is built for decision support, not certainty. The goal is to produce a structured investment memo, not a hot take.
+## What This Is
 
-## What This Skill Does
+This is not just a prompt.
 
-When you give the skill a company name or ticker, it can:
+It is a reusable skill that helps Codex analyze a company the way Buffett often described in Berkshire shareholder letters:
 
-- identify the exact entity, ticker, exchange, geography, and business mix
-- gather primary sources first, including filings, annual reports, proxy materials, and official IR releases
-- analyze the business with a Buffett-style framework
-- judge whether the company is understandable, durable, well-managed, financially resilient, and sensibly priced
-- return a structured memo with a clear verdict band and source links
+- understand the business before projecting outcomes
+- treat stocks as partial ownership interests in businesses
+- separate business quality from price attractiveness
+- reject weak culture, fragile financing, and promotional management
+- accept `pass` and `outside competence` as legitimate outcomes
+
+## Why This Is Different From A Normal Research Prompt
+
+Most investment prompts produce a quick synthesis.
+
+This skill is designed to produce a disciplined memo.
+
+### A normal prompt often:
+
+- starts from a narrative or market angle
+- mixes primary facts with commentary too early
+- overweights valuation multiples
+- hides uncertainty behind confident language
+- forces a buy or sell tone even when the evidence is mixed
+
+### This skill instead:
+
+- starts with filings, annual reports, proxy materials, and official IR sources
+- uses a fixed Buffett-style evaluation sequence
+- applies hard filters before scoring attractive traits
+- treats moat, management, and capital allocation as first-class questions
+- prefers normalized owner earnings over EBITDA storytelling
+- allows `Watchlist`, `Reject`, and `Outside competence` as honest conclusions
+
+In short: it is built for investment judgment, not content generation.
+
+## What You Get
+
+When you give the skill a company name or ticker, it can return a structured memo covering:
+
+1. Investment snapshot
+2. Circle of competence
+3. Business economics
+4. Moat assessment
+5. Management and culture
+6. Balance sheet and crisis resilience
+7. Capital allocation
+8. Valuation
+9. Key risks
+10. Final verdict
+
+Each memo is meant to be decision support, not personalized financial advice.
 
 ## Buffett Framework Used Here
 
@@ -36,26 +78,18 @@ It then assigns one of five verdicts:
 - `Reject`
 - `Outside competence`
 
-## Typical Output
+## Best Use Cases
 
-The memo follows a consistent structure:
+This skill works especially well when you want to:
 
-1. Investment snapshot
-2. Circle of competence
-3. Business economics
-4. Moat assessment
-5. Management and culture
-6. Balance sheet and crisis resilience
-7. Capital allocation
-8. Valuation
-9. Key risks
-10. Verdict
-
-This makes the output useful for repeated company screening, side-by-side comparison, and follow-up diligence.
+- screen a business through a Buffett-style lens
+- compare several companies on moat and capital allocation quality
+- produce a repeatable investment memo instead of an ad hoc opinion
+- decide whether a business is inside your circle of competence
+- challenge a superficially cheap stock with deeper business-quality questions
+- evaluate whether management behaves like owner-operators or empire builders
 
 ## Example Inputs
-
-You can invoke the skill with prompts like these:
 
 ### Chinese
 
@@ -73,48 +107,24 @@ You can invoke the skill with prompts like these:
 - `Evaluate this company using Buffett framework with special focus on moat and capital allocation.`
 - `Is this business inside or outside Buffett's circle of competence?`
 
-## How To Use
+## How The Workflow Works
 
-### 1. Install the skill
+The skill follows a deliberate sequence:
 
-Place this folder at:
+1. Identify the exact entity
+   Ticker, exchange, geography, segments, and ownership structure.
 
-```text
-$CODEX_HOME/skills/buffett-investment-research
-```
+2. Gather primary sources first
+   Annual reports, 10-K or equivalent, proxy, regulator filings, official IR materials, and earnings disclosures.
 
-In many local Codex setups, that path looks like:
+3. Build a base fact set
+   Revenue mix, margins, leverage, share count, capital-allocation history, and management context.
 
-```text
-~/.codex/skills/buffett-investment-research
-```
+4. Apply the Buffett framework
+   Moat, culture, incentives, resilience, reinvestment runway, and valuation.
 
-### 2. Ask Codex to use it
-
-The skill is designed to trigger when the request clearly asks for:
-
-- Buffett-style company analysis
-- value investing research
-- moat assessment
-- management and culture evaluation
-- capital allocation review
-- Buffett-style investment memo or recommendation
-
-### 3. Let the workflow gather evidence
-
-The skill prioritizes:
-
-- company filings and annual reports
-- SEC or regulator pages
-- investor-relations materials
-- official earnings releases and call transcripts
-- competitor filings and industry disclosures
-
-Secondary commentary is used only after the primary facts are pinned down.
-
-### 4. Read the verdict in context
-
-The result is not meant to be a blind buy or sell signal. It is a structured memo that makes the reasoning explicit and shows what evidence is still missing.
+5. Explain the verdict
+   The memo shows why the business qualifies or fails, not just the final label.
 
 ## U.S. Company Helper Script
 
@@ -134,11 +144,28 @@ The script helps bootstrap research with:
 - high-level financial facts from SEC company facts
 - a conservative owner-earnings proxy
 
+## How To Install
+
+Place this folder at:
+
+```text
+$CODEX_HOME/skills/buffett-investment-research
+```
+
+In many local Codex setups, that path looks like:
+
+```text
+~/.codex/skills/buffett-investment-research
+```
+
+Once installed, ask Codex for Buffett-style company analysis, value-investing research, moat assessment, management review, capital-allocation analysis, or a Buffett-style investment memo.
+
 ## Repository Structure
 
 ```text
 .
 ├── SKILL.md
+├── README.md
 ├── agents/
 │   └── openai.yaml
 ├── references/
@@ -149,11 +176,11 @@ The script helps bootstrap research with:
     └── sec_company_snapshot.py
 ```
 
-- `SKILL.md`: core instructions for Codex
+- `SKILL.md`: the core instructions Codex follows
 - `references/framework.md`: the Buffett scorecard and hard filters
-- `references/memo-template.md`: required memo structure
-- `references/timeline.md`: philosophical evolution, mistakes, and crisis lessons
-- `scripts/sec_company_snapshot.py`: SEC bootstrap script for U.S.-listed companies
+- `references/memo-template.md`: the required memo structure
+- `references/timeline.md`: Buffett's philosophical evolution, mistakes, and crisis lessons
+- `scripts/sec_company_snapshot.py`: a U.S. filings bootstrap helper
 
 ## Research Philosophy
 
@@ -174,14 +201,16 @@ This skill is built around a few simple ideas:
 
 ## Source Base
 
-The skill was originally built from a structured synthesis of Buffett's shareholder letters and then turned into an operational workflow for company research.
+The skill was built from a structured synthesis of Buffett's shareholder letters and then translated into a repeatable research workflow.
 
 Primary conceptual inputs include:
 
 - Berkshire Hathaway shareholder letters
 - Berkshire annual reports and reporting archives
-- Buffett's long-running commentary on moat, management, capital allocation, owner earnings, and risk
+- Buffett's commentary on moat, management, capital allocation, owner earnings, mistakes, and risk
 
 ## License
 
-No license has been added yet. If you want others to reuse or adapt this skill, add a license before wider distribution.
+No license has been added yet.
+
+If you want others to freely reuse, modify, or redistribute this skill, the next sensible step is to add a license such as `MIT` or `Apache-2.0`.
