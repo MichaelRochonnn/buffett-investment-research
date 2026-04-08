@@ -1,5 +1,10 @@
 # Buffett Investment Research
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+![Codex Skill](https://img.shields.io/badge/codex-skill-blue)
+![Framework](https://img.shields.io/badge/framework-Buffett-orange)
+![Research Style](https://img.shields.io/badge/research-primary--source--first-lightgrey)
+
 A Codex skill for Buffett-style company analysis, value-investing research, and structured investment memos.
 
 This repository turns Buffett's investing principles into an operational research workflow. Instead of producing a fast opinion, it pushes Codex to do the slower, more important work first: define the exact business, gather primary sources, judge moat and management, stress-test the balance sheet, estimate normalized owner earnings, and only then talk about price.
@@ -107,6 +112,39 @@ This skill works especially well when you want to:
 - `Evaluate this company using Buffett framework with special focus on moat and capital allocation.`
 - `Is this business inside or outside Buffett's circle of competence?`
 
+## Example Output
+
+This is an abridged example of the kind of output the skill is designed to produce:
+
+```text
+Buffett Investment Memo (abridged)
+Company: PDD Holdings (NASDAQ: PDD)
+Verdict: Watchlist
+Confidence: Medium
+
+Circle of competence
+- Marketplace economics are understandable
+- VIE structure and cross-border expansion reduce certainty
+
+Moat
+- Low-price habit, merchant density, and scale are real advantages
+- Moat exists, but not yet a classic Buffett-grade set-and-forget moat
+
+Management and culture
+- Strong execution
+- Minority-shareholder structure and disclosure complexity deserve a discount
+
+Valuation
+- Cash-rich business; headline multiple may look cheap
+- The key question is durability, not just the multiple
+
+What could upgrade the rating
+- Clear proof that reinvestment still earns high returns
+- Evidence that the moat is widening rather than being defended by spend
+```
+
+A full run should also include source links, filing references, missing facts, and a clear explanation of what would break the thesis.
+
 ## How The Workflow Works
 
 The skill follows a deliberate sequence:
@@ -208,6 +246,21 @@ Primary conceptual inputs include:
 - Berkshire Hathaway shareholder letters
 - Berkshire annual reports and reporting archives
 - Buffett's commentary on moat, management, capital allocation, owner earnings, mistakes, and risk
+
+## Suggested GitHub Topics
+
+If you want this repository to be more discoverable on GitHub, these topics fit well:
+
+- `codex-skill`
+- `investing`
+- `value-investing`
+- `warren-buffett`
+- `equity-research`
+- `company-analysis`
+- `financial-analysis`
+- `moat`
+- `capital-allocation`
+- `due-diligence`
 
 ## License
 
