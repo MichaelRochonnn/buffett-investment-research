@@ -211,6 +211,6 @@ Primary conceptual inputs include:
 
 ## License
 
-No license has been added yet.
+This project is licensed under the `MIT` License.
 
-If you want others to freely reuse, modify, or redistribute this skill, the next sensible step is to add a license such as `MIT` or `Apache-2.0`.
+See [LICENSE](LICENSE) for the full text.
